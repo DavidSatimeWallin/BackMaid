@@ -63,8 +63,7 @@
                 $total_amount_of_files++;
                 $single_file_array = array();
                 $single_file_array = explode('-', $entry);
-                if ( date("Ymd", $filestats['mtime']) < $time_limit &&
-                     substr(end($single_file_array), -7, 7) == ".sql.gz")
+                if ( date("Ymd", $filestats['mtime']) < $time_limit )
                 {
                     $files_to_delete_array[] = $directory . $entry;
                 }
