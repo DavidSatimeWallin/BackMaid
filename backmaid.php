@@ -88,7 +88,7 @@
             {
                 if ( !unlink($file) )
                 {
-                    die('Could not delete ' . $file . '\n');
+                    die('Could not delete ' . $directory . $file . '\n');
                 }
             }
             echo "\n\n" . count($files_to_delete_array) . " deleted\n";
