@@ -1,4 +1,4 @@
 BackMaid
 ========
 
-Small Maid (cli php) to clean out old backup files.
+BackMaid is a small PHP CLI script created to help keep backup-directories clean.
