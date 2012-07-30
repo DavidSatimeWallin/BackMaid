@@ -55,9 +55,10 @@
         $files_to_delete_array = array();
         while ( false !== ( $entry = readdir($handle) ) )
         {
-            if ( $entry != "." && 
-                 $entry != ".." && 
-                 file_exists($directory . $entry) )
+            if (  $entry != "." && 
+                  $entry != ".." && 
+                  substr($entry, 0, 1) != "." && 
+                  file_exists($directory . $entry) )
             {
                 $filestats = stat($directory . $entry);
                 $total_amount_of_files++;
