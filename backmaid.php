@@ -66,10 +66,10 @@
                 $total_amount_of_files++;
                 $single_file_array = array();
                 $single_file_array = explode('-', $entry);
-                $total_size = $total_size + $filestats['size'];
                 if ( date("Ymd", $filestats['mtime']) < $time_limit )
                 {
-                    $files_to_delete_array[] = $directory . $entry;
+                  $total_size = $total_size + $filestats['size'];
+                  $files_to_delete_array[] = $directory . $entry;
                 }
             }
         }
