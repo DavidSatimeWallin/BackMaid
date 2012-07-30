@@ -90,20 +90,16 @@
         {
             echo "Removing files...";
             $counter = 0;
-            $second_counter = 0;
             foreach ( $files_to_delete_array as $file )
             {
                 if ( !unlink($file) )
                 {
                     die('Could not delete ' . $directory . $file . '\n');
                 }
-                if ( substr($counter, -1, 1) == 5 )
+                if ( $counter == 50 )
                 {
-                   if ( substr($second_counter, -1, 1) == 5 )
-                   {
-                      echo ".";
-                   }
-                   $second_counter++;
+                   echo ".";
+                   $counter = 0;
                 }
                 $counter++;
             }
