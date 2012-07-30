@@ -53,6 +53,7 @@
     {
         $total_amount_of_files = 0;
         $files_to_delete_array = array();
+        $total_size = 0;
         while ( false !== ( $entry = readdir($handle) ) )
         {
             if (  $entry != "." && 
@@ -65,6 +66,7 @@
                 $total_amount_of_files++;
                 $single_file_array = array();
                 $single_file_array = explode('-', $entry);
+                $total_size = $total_size + $filestats['size'];
                 if ( date("Ymd", $filestats['mtime']) < $time_limit )
                 {
                     $files_to_delete_array[] = $directory . $entry;
@@ -72,7 +74,8 @@
             }
         }
         echo "\nTotal amount of files in $directory: $total_amount_of_files\n";
-        echo "Files to delete: ".count($files_to_delete_array)."\n\n";
+        echo "Files to delete: ".count($files_to_delete_array)."\n";
+        echo "Total amount of space to be freed up: ". bytes_to_eng($total_size)."\n\n";
         if ( count($files_to_delete_array) == 0 )
         {
             echo "0 files in $directory that were created before " . date("Y-m-d", $timespan) . "\n";
@@ -100,5 +103,19 @@
             echo "\n\nYou did not type 'yes'. Aborting!\n\n";
         }
     }
+
+   function bytes_to_eng($filesize)
+   {
+      if ($filesize<1048676)
+         RETURN number_format($filesize/1024,1) . " KB";
+      if ($filesize>=1048576 && $filesize<1073741824)
+         RETURN number_format($filesize/1048576,1) . " MB";
+      if ($filesize>=1073741824 && $filesize<1099511627776)
+         RETURN number_format($filesize/1073741824,2) . " GB";
+      if ($filesize>=1099511627776)
+         RETURN number_format($filesize/1099511627776,2) . " TB";
+      if ($filesize>=1125899906842624) //Currently, PB won't show due to PHP limitations
+         RETURN number_format($filesize/1125899906842624,3) . " PB";
+   }
 
 ?>
