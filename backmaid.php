@@ -89,13 +89,19 @@
         if ( trim($line) == 'yes' )
         {
             echo "Removing files...";
+            $counter = 0;
             foreach ( $files_to_delete_array as $file )
             {
                 if ( !unlink($file) )
                 {
                     die('Could not delete ' . $directory . $file . '\n');
                 }
-                echo ".";
+                $counter++;
+                if ( substr($counter, -1, 1) == 4 || 
+                     substr($counter, -1, 1) == 8 )
+                {
+                   echo ".";
+                }
             }
             echo "\n\n" . count($files_to_delete_array) . " deleted\n";
             exit;
