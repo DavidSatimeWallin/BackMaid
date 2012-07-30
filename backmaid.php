@@ -92,6 +92,7 @@
                 {
                     die('Could not delete ' . $directory . $file . '\n');
                 }
+                echo ".";
             }
             echo "\n\n" . count($files_to_delete_array) . " deleted\n";
             exit;
