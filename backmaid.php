@@ -58,6 +58,7 @@
             if (  $entry != "." && 
                   $entry != ".." && 
                   substr($entry, 0, 1) != "." && 
+                  !is_dir($directory . $entry) && 
                   file_exists($directory . $entry) )
             {
                 $filestats = stat($directory . $entry);
