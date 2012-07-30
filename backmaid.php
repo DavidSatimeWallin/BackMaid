@@ -103,7 +103,7 @@
                 }
                 $counter++;
             }
-            echo "\n\n" . count($files_to_delete_array) . " deleted\n";
+            echo "\n\n" . count($files_to_delete_array) . " files deleted\n\n";
             exit;
         }else{
             echo "\n\nYou did not type 'yes'. Aborting!\n\n";
